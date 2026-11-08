@@ -77,7 +77,7 @@ daughterOf(X,Y):- female(X), childOf(X,Y).
 
 
 %sonOf(X,Y) - X is the male child of Y
-sonOf(X,Y):-fail.
+sonOf(X,Y):-male(X), childOf(X,Y).
 
 %brotherOf(X,Y) - X is the male sibling of Y
 brotherOf(X,Y):-fail.
