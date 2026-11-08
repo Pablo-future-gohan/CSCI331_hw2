@@ -80,7 +80,8 @@ daughterOf(X,Y):- female(X), childOf(X,Y).
 sonOf(X,Y):-male(X), childOf(X,Y).
 
 %brotherOf(X,Y) - X is the male sibling of Y
-brotherOf(X,Y):-fail.
+brotherOf(X,Y):-male(X), childOf(X, P), childOf(Y, P), X\=Y.
+
 %sisterOf(X,Y) - X is the female sibling of Y
 sisterOf(X,Y):-fail.
 
@@ -103,3 +104,4 @@ brotherInLawOf(X,Y):-fail.
 
 %sisterInLawOf(X,Y) - X is the sister of Y's spouse or X is the female spouse of Y's sibling
 sisterInLawOf(X,Y):-fail.
+
