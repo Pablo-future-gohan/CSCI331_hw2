@@ -89,7 +89,7 @@ sisterOf(X,Y):-female(X), childOf(X, P), childOf(Y, P), X\=Y.
 grandchildOf(X,Y):- childOf(X, P), childOf(P, Y).
 
 %ancestorOf(X,Y) - X is an ancestor of Y
-ancestorOf(X,Y):- fail.
+ancestorOf(X,Y):- (childOf(Y,X)); (childOf(Y,Z), ancestorOf(X,Z)).
 
 %auntOf(X,Y) - X is the aunt of Y
 auntOf(X,Y):- sisterOf(X,P), childOf(Y,P).
