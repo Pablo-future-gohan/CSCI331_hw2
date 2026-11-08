@@ -83,7 +83,7 @@ sonOf(X,Y):-male(X), childOf(X,Y).
 brotherOf(X,Y):-male(X), childOf(X, P), childOf(Y, P), X\=Y.
 
 %sisterOf(X,Y) - X is the female sibling of Y
-sisterOf(X,Y):-female(X), childOf(X, P), childOf(Y, P), X\=Y..
+sisterOf(X,Y):-female(X), childOf(X, P), childOf(Y, P), X\=Y.
 
 % grandchildOf(X,Y) - X is a grandchild of Y
 grandchildOf(X,Y):- childOf(X, P), childOf(P, Y).
@@ -98,7 +98,7 @@ auntOf(X,Y):- sisterOf(X,P), childOf(Y,P).
 uncleOf(X,Y):- brotherOf(X,P), childOf(Y,P).
 
 %firstCousinOf(X,Y) - X is the first cousin of Y; i.e. one of X's parents is siblings with one of Y's parents
-firstCousinOf(X,Y):-fail.
+firstCousinOf(X,Y):-childOf(X,P), childOf(Y,Z), (brotherOf(P,Z); sisterOf(P,Z)).
 
 %brotherInLawOf(X,Y) - X is the brother of Y's spouse or X is the male spouse of Y's sibling
 brotherInLawOf(X,Y):-fail.
