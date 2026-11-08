@@ -83,18 +83,19 @@ sonOf(X,Y):-male(X), childOf(X,Y).
 brotherOf(X,Y):-male(X), childOf(X, P), childOf(Y, P), X\=Y.
 
 %sisterOf(X,Y) - X is the female sibling of Y
-sisterOf(X,Y):-fail.
+sisterOf(X,Y):-female(X), childOf(X, P), childOf(Y, P), X\=Y..
 
 % grandchildOf(X,Y) - X is a grandchild of Y
-grandchildOf(X,Y):- fail.
+grandchildOf(X,Y):- childOf(X, P), childOf(P, Y).
 
 %ancestorOf(X,Y) - X is an ancestor of Y
 ancestorOf(X,Y):- fail.
 
 %auntOf(X,Y) - X is the aunt of Y
-auntOf(X,Y):- fail.
+auntOf(X,Y):- sisterOf(X,P), childOf(Y,P).
+
 %uncleOf(X,Y) - X is the uncle of Y
-uncleOf(X,Y):- fail.
+uncleOf(X,Y):- brotherOf(X,P), childOf(Y,P).
 
 %firstCousinOf(X,Y) - X is the first cousin of Y; i.e. one of X's parents is siblings with one of Y's parents
 firstCousinOf(X,Y):-fail.
