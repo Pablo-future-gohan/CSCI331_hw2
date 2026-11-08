@@ -101,7 +101,7 @@ uncleOf(X,Y):- brotherOf(X,P), childOf(Y,P).
 firstCousinOf(X,Y):-childOf(X,P), childOf(Y,Z), (brotherOf(P,Z); sisterOf(P,Z)).
 
 %brotherInLawOf(X,Y) - X is the brother of Y's spouse or X is the male spouse of Y's sibling
-brotherInLawOf(X,Y):-fail.
+brotherInLawOf(X,Y):-(brotherOf(X, P), spouse(Y,P)) ; ((sisterOf(Y, P); brotherOf(Y,P)), married(X,P), male(X)).
 
 %sisterInLawOf(X,Y) - X is the sister of Y's spouse or X is the female spouse of Y's sibling
 sisterInLawOf(X,Y):-fail.
