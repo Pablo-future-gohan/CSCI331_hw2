@@ -70,7 +70,7 @@ married(sophie,edward).
 %You may add more clauses to help%
 %********************************%
 % spouse(X,Y) Symmetric version of married
-spouse(X,Y):- fail.
+spouse(X,Y):- married(X,Y) ; married(Y,X).
 
 %daughterOf(X,Y) - X is the female child of Y
 daughterOf(X,Y):-fail.
