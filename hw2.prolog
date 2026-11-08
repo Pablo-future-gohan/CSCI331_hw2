@@ -73,7 +73,9 @@ married(sophie,edward).
 spouse(X,Y):- married(X,Y) ; married(Y,X).
 
 %daughterOf(X,Y) - X is the female child of Y
-daughterOf(X,Y):-fail.
+daughterOf(X,Y):- female(X), childOf(X,Y).
+
+
 %sonOf(X,Y) - X is the male child of Y
 sonOf(X,Y):-fail.
 
